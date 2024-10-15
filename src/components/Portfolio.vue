@@ -28,7 +28,7 @@
   <script>
   import axios from 'axios';
   import ProjectCard from './ProjectCard.vue';
-  import { store } from '../store/store'; // importazione dello store
+  import { store } from '../store'; // importazione dello store
   
   export default {
     name: 'Portfolio',

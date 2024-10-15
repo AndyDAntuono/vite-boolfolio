@@ -10,7 +10,7 @@
   </template>
   
   <script>
-  import { store } from '../store/store'; // importazione dello store
+  import { store } from '../store'; // importazione dello store
   
   export default {
     name: 'Header',
