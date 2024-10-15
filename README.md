@@ -67,3 +67,4 @@ Bonus 2: realizzate altre pagine istituzionali (Chi sono per esempio).
 - creo un componente Header.vue nella cartella components con un menù di navigazione basilare
 - sempre nella cartella components creo il file homepage.vue
 - sempre nella cartella components creo il file portfolio.vue
+- non riuscendo a avere unn riscontro visivo ottimale (vedevo solo le parole Homepage e Portfolio ma era come se non fossero "linkate"), ho cercato varie soluzioni fiché ho capito che dovevo aggiornare il codice di main.js.

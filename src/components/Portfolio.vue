@@ -41,14 +41,14 @@
     },
     data() {
       return {
-        projects: [],
-        pagination: {
+        projects: [], // Dati dei progetti
+        pagination: { // Dati per la paginazione
           current_page: 1,
           last_page: 1,
           prev_page_url: null,
           next_page_url: null
         },
-        loading: true
+        loading: true // Stato di caricamento
       };
     },
     mounted() {
@@ -61,7 +61,7 @@
         axios.get(pageUrl)
           .then(response => {
             this.projects = response.data.data; // I dati dei progetti sono nell'array 'data'
-            this.pagination = {
+            this.pagination = { // Aggiorna i dati di paginazione
               current_page: response.data.current_page,
               last_page: response.data.last_page,
               prev_page_url: response.data.prev_page_url,
