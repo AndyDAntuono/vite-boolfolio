@@ -47,3 +47,18 @@ NB: purtroppo ho fatto un push solo per la milestone 1 e 2 perché mi sono lasci
 - modifica il controller Api/ProjectController per restituire i progetti con paginazione.
 - al momento i pulsanti Precedente e Successiva apparentemente non fuonzionano perché al momento risultano solo Progetto 1 e Progetto 2 he sono i due progetti di default risalenti alla repo di laravel-auth.
 - per sicurezza ho creato altri 4 a caso poiché il contatore della paginazione conta 5 progetti e superata questo numero, viene creata una nuova pagina dal sesto progetto in poi. Il test ha avuto esito positivo poiché effetivamente si aperta un nuoba pagina per il sesto progetto nella App.vue di vite-boolfolio.
+
+NB: dal momento che per l'esercizio di oggi (15-10-24) prevede continuare di lavorare esclusivamente in questa repo, ergo non aggiornerò laravel-api a meno che non sia necessario.
+
+/*CONSEGNA DEL 15-10-24*/
+
+Continuate a lavorare sulle repo aperte ieri, aggiungendo in vite-boolfolio la gestione delle rotte.
+Installate quindi il pacchetto vue-router con il comando npm i vue-router@4 e quindi create il file router.js in cui andare a definire le rotte delle vostre pagine.
+Realizzate un header in cui andare a mettere le voci del menù di navigazione. Dovrete fare due pagine obbligatoriamente: Homepage e Portfolio. In quest'ultima dovrete mostrare i vostri progetti.
+Bonus 1: utilizzate lo store per le voci del menù e l'URI del vostro endpoint.
+Bonus 2: realizzate altre pagine istituzionali (Chi sono per esempio).
+
+/*SOLUZIONE DEL 15-10-24*/
+
+- lancio il comando npm i vue-router@4 per installare Vue Router
+    - lancio il comando aggiuntivo npm list vue-router per assicurarmi che Vue Router sia installato correttamente
