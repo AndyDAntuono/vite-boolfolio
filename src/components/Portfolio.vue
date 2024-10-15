@@ -2,21 +2,16 @@
     <div>
       <h1>Portfolio</h1>
       
-      <!-- Mostra "Caricamento in corso" quando i dati sono in caricamento -->
       <div v-if="loading">Caricamento in corso...</div>
       
-      <!-- Mostra i progetti quando non sono in caricamento -->
       <div v-else>
-        <div v-if="projects.length === 0">
-          Nessun progetto disponibile.
-        </div>
+        <div v-if="projects.length === 0">Nessun progetto disponibile.</div>
         <div v-else>
           <div v-for="project in projects" :key="project.id" class="project-list">
             <ProjectCard :project="project" />
           </div>
         </div>
         
-        <!-- Controlli per la paginazione -->
         <div class="pagination-controls">
           <button @click="fetchProjects(pagination.prev_page_url)" :disabled="!pagination.prev_page_url">
             Precedente
@@ -33,6 +28,7 @@
   <script>
   import axios from 'axios';
   import ProjectCard from './ProjectCard.vue';
+  import { store } from '../store/store'; // importazione dello store
   
   export default {
     name: 'Portfolio',
@@ -41,33 +37,33 @@
     },
     data() {
       return {
-        projects: [], // Dati dei progetti
-        pagination: { // Dati per la paginazione
+        projects: [], 
+        pagination: {
           current_page: 1,
           last_page: 1,
           prev_page_url: null,
           next_page_url: null
         },
-        loading: true // Stato di caricamento
+        loading: true 
       };
     },
     mounted() {
-      this.fetchProjects(); // Carica i progetti alla partenza
+      this.fetchProjects();
     },
     methods: {
-      // Metodo per recuperare i progetti dalla API con la paginazione
-      fetchProjects(pageUrl = 'http://localhost:8000/api/projects') {
-        this.loading = true; // Imposta lo stato di caricamento a true
+      // metodo per recuperare i progetti dalla API con la paginazione
+      fetchProjects(pageUrl = store.apiUrl) { // ciò usa l'API URL dallo store
+        this.loading = true;
         axios.get(pageUrl)
           .then(response => {
-            this.projects = response.data.data; // I dati dei progetti sono nell'array 'data'
-            this.pagination = { // Aggiorna i dati di paginazione
+            this.projects = response.data.data; // preleva i dati dall'array 'data'
+            this.pagination = { // aggiorna i dati di paginazione
               current_page: response.data.current_page,
               last_page: response.data.last_page,
               prev_page_url: response.data.prev_page_url,
               next_page_url: response.data.next_page_url
             };
-            this.loading = false; // Imposta loading a false quando i dati sono stati ricevuti
+            this.loading = false;
           })
           .catch(error => {
             console.error('Errore durante il recupero dei progetti:', error);
