@@ -63,3 +63,4 @@ Bonus 2: realizzate altre pagine istituzionali (Chi sono per esempio).
 - lancio il comando npm i vue-router@4 per installare Vue Router
     - lancio il comando aggiuntivo npm list vue-router per assicurarmi che Vue Router sia installato correttamente
 - nella cartella src, creo il file router.js, in cui definirò le rotte per le future pagine Homepage e Portfolio.
+- modifico App.vue per rimuovere la logica relativa ai progetti e alla paginazione poiché essa sposta nei file header.vue e portfolio.vue
