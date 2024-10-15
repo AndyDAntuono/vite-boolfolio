@@ -71,3 +71,6 @@ Bonus 2: realizzate altre pagine istituzionali (Chi sono per esempio).
 [Bonus 1]
 - creo il file store.js nella cartella src della mia repo e lo compilo
 - modifico  i files Header.vue e Portfolio.vue per la corretta implentazione del file store.js
+[Bonus 2]
+- imposto la rotta per ChiSono.vue nel file router.js
+- creo il file ChiSono.vue nella cartella components
