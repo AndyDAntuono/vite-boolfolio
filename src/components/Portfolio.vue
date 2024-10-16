@@ -1,21 +1,25 @@
 <template>
   <div>
     <h1>Portfolio</h1>
-    
+
+    <!-- Barra di ricerca -->
+    <div class="search-bar">
+      <input v-model="searchSlug" placeholder="Cerca un progetto..." />
+      <button @click="searchProject">Cerca</button>
+    </div>
+
     <div v-if="loading">Caricamento in corso...</div>
     
     <div v-else>
       <div v-if="projects.length === 0">Nessun progetto disponibile.</div>
       <div v-else>
         <div v-for="project in projects" :key="project.id" class="project-list">
-          <!-- Aggiungi router-link per navigare al dettaglio del progetto -->
           <router-link :to="`/projects/${project.slug}`">
             <ProjectCard :project="project" />
           </router-link>
         </div>
       </div>
       
-      <!-- Controlli per la paginazione -->
       <div class="pagination-controls">
         <button @click="fetchProjects(pagination.prev_page_url)" :disabled="!pagination.prev_page_url">
           Precedente
@@ -32,7 +36,7 @@
 <script>
 import axios from 'axios';
 import ProjectCard from './ProjectCard.vue';
-import { store } from '../store'; // importazione dello store
+import { store } from '../store'; // Importa lo store
 
 export default {
   name: 'Portfolio',
@@ -41,27 +45,28 @@ export default {
   },
   data() {
     return {
-      projects: [], 
+      projects: [],
       pagination: {
         current_page: 1,
         last_page: 1,
         prev_page_url: null,
         next_page_url: null
       },
-      loading: true 
+      loading: true,
+      searchSlug: '', // Aggiungi lo stato per gestire lo slug da cercare
     };
   },
   mounted() {
-    this.fetchProjects();
+    this.fetchProjects(); // Carica i progetti quando il componente è montato
   },
   methods: {
-    // metodo per recuperare i progetti dalla API con la paginazione
-    fetchProjects(pageUrl = store.apiUrl) { // usa l'API URL dallo store
+    // Metodo per recuperare i progetti dalla API con la paginazione
+    fetchProjects(pageUrl = store.apiUrl) { 
       this.loading = true;
       axios.get(pageUrl)
         .then(response => {
-          this.projects = response.data.data; // preleva i dati dall'array 'data'
-          this.pagination = { // aggiorna i dati di paginazione
+          this.projects = response.data.data;
+          this.pagination = {
             current_page: response.data.current_page,
             last_page: response.data.last_page,
             prev_page_url: response.data.prev_page_url,
@@ -73,45 +78,41 @@ export default {
           console.error('Errore durante il recupero dei progetti:', error);
           this.loading = false;
         });
+    },
+
+    // Funzione per cercare il progetto tramite lo slug
+    searchProject() {
+      let slug = this.searchSlug.trim(); // Rimuove eventuali spazi vuoti all'inizio e alla fine
+      if (!slug) {
+        alert('Inserisci uno slug valido.');
+        return;
+      }
+
+      // Trasforma lo slug in minuscolo e sostituisce gli spazi con trattini
+      slug = slug.toLowerCase().replace(/\s+/g, '-');
+      console.log('Slug cercato:', slug);
+
+      // Effettua la richiesta all'API per verificare se lo slug esiste
+      axios.get(`http://localhost:8000/api/projects/${slug}`)
+        .then(response => {
+          if (response.data) {
+            // Se il progetto esiste, reindirizza alla pagina di dettaglio del progetto
+            this.$router.push(`/projects/${slug}`);
+          }
+        })
+        .catch(error => {
+          if (error.response && error.response.status === 404) {
+            // Se lo slug non esiste, reindirizza alla pagina NotFound
+            this.$router.push('/notfound');
+          } else {
+            console.error('Errore durante la ricerca del progetto:', error);
+          }
+        });
     }
   }
 };
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.project-list {
-  margin: 10px 0;
-}
-
-.pagination-controls {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-button {
-  margin: 0 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-span {
-  margin: 0 10px;
-  font-size: 16px;
-}
+/* Stili esistenti */
 </style>

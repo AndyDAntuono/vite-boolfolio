@@ -5,3 +5,19 @@
     </div>
   </template>
   
+  <script>
+  export default {
+    name: 'NotFound'
+  };
+  </script>
+  
+  <style scoped>
+  h1 {
+    color: red;
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+  </style>
+  

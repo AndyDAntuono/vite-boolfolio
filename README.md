@@ -113,3 +113,6 @@ Bonus: realizzare una pagina Not Found da far comparire quando si cerca di acced
 
 [wesecuzione bonus]
 - creo il componente NotFound.vue per la pagina Not Found da visualizzare quando l'utente accede a una rotta non esistente.
+- avendo riletto la consegna capisco che ottenere il risultato desiderato devo prima modificare ill metodo show nel ProjectController per gestire errori 404
+- modifico il componente ProjectDetail.vue per gestire l'errore quando lo slug non corrisponde a un progetto e, in quel caso, mostrare il componente NotFound.
+- dopo vari tentativi ho ottenuto il seguente risultato: nella pagina di Portfolio.vue ora c'è una barra della ricerca. Se l'utente cerca un progetto esistente, viene "trasportato" nella pagina dettaglio di suddetto progetto. Invece se l'utente cerca un progetto inesistente, egli otterà la pagina notfound.
