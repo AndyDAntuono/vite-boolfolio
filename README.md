@@ -74,3 +74,37 @@ Bonus 2: realizzate altre pagine istituzionali (Chi sono per esempio).
 [Bonus 2]
 - imposto la rotta per ChiSono.vue nel file router.js
 - creo il file ChiSono.vue nella cartella components
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+NB 16-10-24: dal momento che per l'esercizio del 16-10-24 devo lavorare contemporaneamente con due repo (laravel-api e vue-boolfolio) scriverò sia la consegna che soluzione dell'esercizio in  entrambe le repo per sicurezza
+
+/*CONSENGA DEL 16-10-24*/
+
+Continuate a lavorare sulle repo aperte ieri. Create la rotta nel progetto vite boolfolio per visualizzare la pagina di dettaglio di un singolo progetto. Per visualizzare i suoi dati ricordatevi che dovete fare anche un endpoint nel progetto laravel che li recupera tramite lo slug.
+Bonus: realizzare una pagina Not Found da far comparire quando si cerca di accedere ad una pagina che non esiste
+
+/*SOLUZIONE DEL 16-10-24*/
+
+[aggiornamento del backend/larave/laravel-api]
+
+- nel file api-php aggiungo una rotta che permetta di recuperare i dettagli di un progetto tramite lo slug.
+- aggiungo il metodo show nel controller ProjectController (quello che gestisce le API) per gestire la richiesta dello slug.
+- per verificare che le due precedenti operazioni abbiano un esito positivo, utilizzo ThunderClient per testare l'endpoint, poiché questi dovrebbe restituire correttamente i dettagli di un  progetto.
+    - ho inserito l'indirizzo http://localhost:8000/api/projects/progetto-1 in thunderclient, il quale mi restituisce i seguenti dati:
+        {
+            "id": 1,
+            "title": "Progetto 1",
+            "slug": "progetto-1",
+            "image": null,
+            "description": "Descrizione del progetto 1",
+            "created_at": "2024-10-14T15:07:45.000000Z",
+            "updated_at": "2024-10-14T15:07:45.000000Z",
+            "type_id": null
+        } 
+    - ciò significa che il test ha avuto un esito positivo
+
+
+[aggiornamento del frontend/vue/vue-boolfolio]
+
+- nel file router.js, aggiungo una rotta dinamica per la pagina di dettaglio dei progetti. 
