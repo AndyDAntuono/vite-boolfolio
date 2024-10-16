@@ -109,3 +109,4 @@ Bonus: realizzare una pagina Not Found da far comparire quando si cerca di acced
 
 - nel file router.js, aggiungo una rotta dinamica per la pagina di dettaglio dei progetti. 
 - crea il file ProjectDetail.vue nella cartella components per visualizzare i dettagli del progetto.
+- modifico Portfolio.vue aggiungendo un link per ogni progetto in modo che porti alla pagina di dettaglio tramite un ciclo v-for.
