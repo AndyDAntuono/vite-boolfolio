@@ -9,7 +9,7 @@ const routes = [
   { path: '/portfolio', name: 'Portfolio', component: Portfolio },
   {path: '/chi-sono', name: 'ChiSono', component: ChiSono },
   { path: '/projects/:slug', name: 'ProjectDetail', component: ProjectDetail }, // rotta dinamica
-  { path: '/:catchAll(.*)', component: NotFound } // catch-all per pagina Not Found
+  //{ path: '/:catchAll(.*)', component: NotFound } // catch-all per pagina Not Found
 ];
 
 const router = createRouter({
