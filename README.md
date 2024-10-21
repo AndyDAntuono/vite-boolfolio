@@ -116,3 +116,46 @@ Bonus: realizzare una pagina Not Found da far comparire quando si cerca di acced
 - avendo riletto la consegna capisco che ottenere il risultato desiderato devo prima modificare ill metodo show nel ProjectController per gestire errori 404
 - modifico il componente ProjectDetail.vue per gestire l'errore quando lo slug non corrisponde a un progetto e, in quel caso, mostrare il componente NotFound.
 - dopo vari tentativi ho ottenuto il seguente risultato: nella pagina di Portfolio.vue ora c'è una barra della ricerca. Se l'utente cerca un progetto esistente, viene "trasportato" nella pagina dettaglio di suddetto progetto. Invece se l'utente cerca un progetto inesistente, egli otterà la pagina notfound.
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+/*CONSEGNA DEL 17-10-24*/
+
+continuate a lavorare sulle repo dei giorni scorsi implementando l'invio delle mail. Ripercorrete i passaggi visti a lezione, un passo alla volta. Aiutatevi con le slides e la documentazione.
+Bonus 1: Visualizzare i messaggi  di errore.
+Bonus 2: Visualizzare un messaggio di avvenuto invio della mail.
+Bonus 3: Reindirizzare ad una thank you page apposita
+Bonus 4: Personalizzare la mail con altri stili.
+
+/*SOLUZIONE DEò 17-10-24*/
+
+[fase preliminare]
+- mi iscrivo a mailtrap.io
+- vado su Email Testing
+- vado su Inoxes
+- nella scheda My Inbox,  vado nella sezione integration e poi su Code Samples
+- apro il menu a tendina accanto alla voce cURL e seleziono PHP: Laravel 9+
+- copio i seguenti dati:
+    # Looking to send emails in production? Check out our Email API/SMTP product!
+    MAIL_MAILER=smtp
+    MAIL_HOST=sandbox.smtp.mailtrap.io
+    MAIL_PORT=2525
+    MAIL_USERNAME=2004c1cf939539
+    MAIL_PASSWORD=b5917a1a385653
+- sovrascrivo i dati precedenti con i loro simili nel file env, tranne le ultime due voci, ovvero: 
+    MAIL_FROM_ADDRESS="hello@example.com"
+    MAIL_FROM_NAME="${APP_NAME}"
+- lancio il comando composer require guzzlehttp/guzzle che sarà usato per gestire le richieste HTTP, incluso l'invio di email tramite un'API esterna.
+- lancio il comando php artisan make:migration create_contacts_table per creare una tabella per i contatti, ovvero 2024_10_18_152654_create_contacts_table.php
+- modifico 2024_10_18_152654_create_contacts_table.php e lancio il comando php artisan migrate
+- lancio il comando php artisan make:model Contact per creare l'omonimo modello
+- modifico il modello Contact secondo i miei bisogni
+- crea un Mailable con il comando php artisan make:mail ContactMail. Modifico quest'ultimo secondo i miei bisogni e cambio il dato di default delle voce MAIL_FROM_ADDRESS del file .env in "info@boolfolio.com"
+- apporto delle piccole migliorie in Contact.php e ContactMail.php
+- aggiungo il file contact.blade.php per creare il template dell'email in resources/views/emails/contact.blade.php.
+- Sono incappato che non riuscivo a risolvere poi ho capito. Non avevo copiato in modo adeguato la password dal mio account di Mailtrap.
+- lancio il comando php artisan make:controller ContactController per creare un controller che gestisca l'invio dell' email.
+    - modifico ContactController secondo i miei bisogni.
+[Bonus 1]
+- modifico il ContactController per gestire gli errori
+- in vite-boolfolio, credo un componente vue per creare un form di contatto per testare l'invio dell'email (e i possinbili errori del caso). E di conseguenza lo implemento nei files store.js e router.js in modo tale la voce contatti sia visibile anche nel header
