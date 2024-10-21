@@ -4,7 +4,7 @@ import Portfolio from "/src/components/Portfolio.vue";
 import ChiSono from "/src/components/ChiSono.vue";
 import ProjectDetail from "/src/components/ProjectDetail.vue";
 import NotFound from "/src/components/NotFound.vue"; 
-import Contact from './components/Contact.vue';
+import Contact from '/src/components/Contact.vue';
 
 const routes = [
   { path: '/', name: 'Homepage', component: Homepage },
