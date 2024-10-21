@@ -50,7 +50,7 @@
     methods: {
       async sendContactForm() {
         try {
-          const response = await axios.post('http://localhost:8000/contact', this.formData);
+          const response = await axios.post('http://localhost:8000/api/contact', this.formData);
           this.message = response.data.message;
           this.isSuccess = true;
         } catch (error) {
