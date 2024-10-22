@@ -159,3 +159,5 @@ Bonus 4: Personalizzare la mail con altri stili.
 [Bonus 1]
 - modifico il ContactController per gestire gli errori
 - in vite-boolfolio, credo un componente vue per creare un form di contatto per testare l'invio dell'email (e i possinbili errori del caso). E di conseguenza lo implemento nei files store.js e router.js in modo tale la voce contatti sia visibile anche nel header
+[Bonus 2]
+- Dopo svariati errori ed altrettante correzioni somo riuscito a copmpletare anche il secondo bonus!
