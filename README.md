@@ -163,3 +163,4 @@ Bonus 4: Personalizzare la mail con altri stili.
 - Dopo svariati errori ed altrettante correzioni somo riuscito a copmpletare anche il secondo bonus!
 [Bomnus 3 ]
 - nella cartella components creo file ThankYou.vue, un pagina apposita con un messaggio di ringraziamento
+- aggiungo a router.js la rotta per la pagina ThanYou.vue
