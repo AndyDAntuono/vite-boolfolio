@@ -53,6 +53,10 @@
           const response = await axios.post('http://localhost:8000/api/contact', this.formData);
           this.message = response.data.message;
           this.isSuccess = true;
+
+           // Reindirizza alla pagina di ringraziamento
+           this.$router.push('/thank-you');
+
         } catch (error) {
           if (error.response) {
             this.message = error.response.data.error || 'Errore durante l\'invio del form.';

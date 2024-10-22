@@ -164,3 +164,4 @@ Bonus 4: Personalizzare la mail con altri stili.
 [Bomnus 3 ]
 - nella cartella components creo file ThankYou.vue, un pagina apposita con un messaggio di ringraziamento
 - aggiungo a router.js la rotta per la pagina ThanYou.vue
+- implemento la logica della pagina ThankYou in quella di Contact.vue affinché quest'ultimo mostri il messaggio di ringraziamento dopo l'invio di un email
